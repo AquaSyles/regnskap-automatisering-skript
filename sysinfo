@@ -1,22 +1,23 @@
 #!/bin/bash
 
-echo -e "\e[33;1mLinux version:\e[0m"
+echo -e "\e[107;1m\e[96;1mLinux version:\e[0m"
 uname -r
+echo
 
-echo "CPU Model Name:"; lscpu | grep "Model name"
-echo "Architecture:"; lscpu | grep "Architecture"
-echo "Cores per Socket:"; lscpu | grep "Core(s) per socket:"
-echo "Threads per Core:"; lscpu | grep "Thread(s) per core:"
+echo -e "\e[43;1m\e[96;1mCPU Model Name:\e[0m"; lscpu | grep "Model name:" | sed 's/Model name:[[:space:]]*//'
+echo -e "\e[43;1m\e[96;1mArchitecture:\e[0m"; lscpu | grep "Architecture" | sed 's/Architecture:[[:space:]]*//'
+echo -e "\e[43;1m\e[96;1mCores per Socket:\e[0m"; lscpu | grep "Core(s) per socket:" | sed 's/Core(s) per socket:[[:space:]]*//'
+echo -e "\e[43;1m\e[96;1mThreads per Core:\e[0m"; lscpu | grep "Thread(s) per core:" | sed 's/Thread(s) per core:[[:space:]]*//'
 
 
-echo "Memory Information:"
+echo -e "\e[107;1m\e[96;1mMemory Information:\e[0m"
 free -h
 
-echo "Disk Information:"
+echo -e "\e[107;1m\e[96;1mDisk Information:\e[0m"
 lsblk
 
-echo "Internet Information:"
+echo -e "\e[107;1m\e[96;1mInternet Information:\e[0m"
 
-echo "Graphics Card Information:"
+echo -e "\e[107;1m\e[96;1mGraphics Card Information:\e[0m"
 lspci | grep -i vga
 
