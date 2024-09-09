@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo -e "\e[33;1mLinux version:\e[0m"
+uname -r
+
+echo "CPU Model Name:"; lscpu | grep "Model name"
+echo "Architecture:"; lscpu | grep "Architecture"
+echo "Cores per Socket:"; lscpu | grep "Core(s) per socket:"
+echo "Threads per Core:"; lscpu | grep "Thread(s) per core:"
+
+
+echo "Memory Information:"
+free -h
+
+echo "Disk Information:"
+lsblk
+
+echo "Internet Information:"
+
+echo "Graphics Card Information:"
+lspci | grep -i vga
+
