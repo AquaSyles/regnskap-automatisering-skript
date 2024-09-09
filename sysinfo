@@ -17,6 +17,7 @@ echo -e "\e[107;1m\e[96;1mDisk Information:\e[0m"
 lsblk
 
 echo -e "\e[107;1m\e[96;1mInternet Information:\e[0m"
+echo "IP Address: $(ip -4 address | grep "inet 192" | sed 's/^[[:space:]]*inet //' | awk {'print $1'} | cut -d '/' -f 1)"
 
 echo -e "\e[107;1m\e[96;1mGraphics Card Information:\e[0m"
 lspci | grep -i vga
