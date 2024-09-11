@@ -8,17 +8,20 @@ echo -e "\e[43;1m\e[96;1mCPU Model Name:\e[0m"; lscpu | grep "Model name:" | sed
 echo -e "\e[43;1m\e[96;1mArchitecture:\e[0m"; lscpu | grep "Architecture" | sed 's/Architecture:[[:space:]]*//'
 echo -e "\e[43;1m\e[96;1mCores per Socket:\e[0m"; lscpu | grep "Core(s) per socket:" | sed 's/Core(s) per socket:[[:space:]]*//'
 echo -e "\e[43;1m\e[96;1mThreads per Core:\e[0m"; lscpu | grep "Thread(s) per core:" | sed 's/Thread(s) per core:[[:space:]]*//'
-
+echo
 
 echo -e "\e[107;1m\e[96;1mMemory Information:\e[0m"
 free -h
+echo
 
 echo -e "\e[107;1m\e[96;1mDisk Information:\e[0m"
 lsblk
+echo
 
 echo -e "\e[107;1m\e[96;1mInternet Information:\e[0m"
 echo "IP Address: $(ip -4 address | grep "inet 192" | sed 's/^[[:space:]]*inet //' | awk {'print $1'} | cut -d '/' -f 1)"
 
+echo
 echo -e "\e[107;1m\e[96;1mGraphics Card Information:\e[0m"
 lspci | grep -i vga
 
