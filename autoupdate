@@ -2,4 +2,4 @@
 
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove
 
-sudo bash -c 'echo "Updated system successfully at $(date)" >> /var/log/cron.log'
+echo "Updated system successfully at $(date)" >> /home/olav/bin/log/cron.log
