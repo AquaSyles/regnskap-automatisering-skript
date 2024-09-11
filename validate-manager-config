@@ -1,0 +1,14 @@
+#!/bin/bash
+
+config_path=/var/lib/flatpak/overrides/org.keepassxc.KeePassXC
+valid_content='[Context]
+shared=!network;'
+
+file_content=$(cat "$config_path")
+
+if [[ "$file_content" == "$valid_content" ]]; then
+    echo "Valid file."
+else
+    echo "Error! Replacing file."
+    echo "$valid_content" | sudo tee "$config_path" > /dev/null
+fi
