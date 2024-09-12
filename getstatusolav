@@ -1,0 +1,37 @@
+#!/bin/bash
+
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+statusfolder="$HOME/bin/status"
+
+status=$(cat $statusfolder)
+
+# Runs when machine was last reported being up.
+if [[ $status -eq 1 ]]; then
+	result=$(timeout 1 ping -c 1 192.168.1.60 | grep "received" | awk {'print $1'})
+	# If true machine is still up.
+	if [[ $result -eq 1 ]]; then
+		echo "Host is up and running."
+		
+	# Machine is down.
+	else
+		echo "Host is down. Updating status..."
+		DISPLAY=:0 notify-send "GetStatus UpdateOlav" "Host is down. Updating status..."
+		$(echo 0 > $statusfolder)
+	fi
+fi
+
+if [[ $status -eq 0 ]]; then
+        result=$(timeout 1 ping -c 1 192.168.1.60 | grep "received" | awk {'print $1'})
+        # If true machine is still up.
+        if [[ $result -eq 1 ]]; then
+                echo "Host is up and running."
+		DISPLAY=:0 notify-send "GetStatusOlav Update" "Host is up and running."
+                $(echo 1 > $statusfolder)
+        # Machine is down.
+        else
+                echo "Host is still down..."
+        fi
+fi
+
+

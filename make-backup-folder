@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $# -eq 1 ]]; then
+	mkdir -p /home/elev/Backup/$1
+else
+	echo "Requires exactly 1 argument."
+fi
