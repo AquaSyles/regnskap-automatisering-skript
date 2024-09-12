@@ -1,5 +1,6 @@
 #!/bin/bash
 
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove
+flatpak update -y
 
-echo "Updated system successfully at $(date)" >> /home/olav/bin/log/cron.log
+echo "Updated system successfully at $(date)" >> /home/olav/bin/log/updates.log 2>&1

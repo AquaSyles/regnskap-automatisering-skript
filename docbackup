@@ -1,0 +1,15 @@
+#!/bin/bash
+
+backup_host="elev@192.168.1.24"
+
+backup_folder=/home/elev/Backup/
+backup_folder_name="$(whoami)_backup"
+archive_path=/home/olav/Documents/
+archive_name="Docs.bak.tar.gz"
+
+cd $archive_path
+tar -czf $archive_name Docs
+compressed_file="$(pwd)/$archive_name"
+
+ssh $backup_host "/home/elev/bin/make-backup-folder $backup_folder_name" 
+rsync --remove-source-files $compressed_file $backup_host:$backup_folder/$backup_folder_name

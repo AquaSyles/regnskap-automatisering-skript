@@ -1,0 +1,6 @@
+#!/bin/bash
+
+content="[$(whoami)] logged in at [$(date)]
+Hostname: [$HOSTNAME]"
+
+ssh elev@192.168.1.24 "echo -e \"$content\" >> /home/elev/log/logins.log"
